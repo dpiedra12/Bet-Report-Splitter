@@ -70,7 +70,7 @@ if uploaded_file:
 
         st.subheader("Download all files")
 
-        if st.button("📦 Download all  files in ZIP formatP"):
+        if st.button("📦 Download all  files in ZIP format"):
 
             zip_buffer = io.BytesIO()
 
@@ -133,4 +133,5 @@ if uploaded_file:
                         key=f"{partner}_{file_info['event_id']}"
 
                     )
+
 
