@@ -12,9 +12,9 @@ if uploaded_file:
 
     # Validar columnas necesarias
     if "Partner" not in df.columns or "Event Id" not in df.columns:
-        st.error("El archivo debe contener las columnas 'Partner' y 'Event Id'")
+        st.error("The file must contain the columns 'Partner' and 'Event Id'.'")
     else:
-        st.success("Archivo cargado correctamente ✅")
+        st.success("File uploaded successfully ✅")
 
         # ==============================
         # EVENT IDS GENERALES
@@ -22,8 +22,8 @@ if uploaded_file:
 
         event_ids = df["Event Id"].dropna().unique()
 
-        st.subheader("Event IDs encontrados")
-        st.metric("Total de Eventos", len(event_ids))
+        st.subheader("Event IDs found")
+        st.metric("Total Events", len(event_ids))
 
         cols = st.columns(3)
         for index, event in enumerate(event_ids):
@@ -68,9 +68,9 @@ if uploaded_file:
         # BOTÓN DESCARGAR TODOS (ZIP)
         # ==============================
 
-        st.subheader("Descarga masiva")
+        st.subheader("Download all files")
 
-        if st.button("📦 Descargar TODOS los archivos en ZIP"):
+        if st.button("📦 Download all  files in ZIP formatP"):
 
             zip_buffer = io.BytesIO()
 
@@ -105,10 +105,10 @@ if uploaded_file:
         # MOSTRAR DESCARGAS AGRUPADAS
         # ==============================
 
-        st.subheader("Archivos individuales")
+        st.subheader("Individual files")
 
         total_files = sum(len(v) for v in files_by_partner.values())
-        st.write(f"Total de archivos generados: {total_files}")
+        st.write(f"Total files generated: {total_files}")
 
         for partner, files in files_by_partner.items():
 
@@ -126,10 +126,11 @@ if uploaded_file:
                     output.seek(0)
 
                     st.download_button(
-                        label=f"Descargar {file_info['file_name']}",
+                        label=f"Download {file_info['file_name']}",
                         data=output,
                         file_name=file_info["file_name"],
                         mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
                         key=f"{partner}_{file_info['event_id']}"
 
                     )
+
