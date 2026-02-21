@@ -5,7 +5,7 @@ import zipfile
 
 st.title("Bet Report Splitter")
 
-uploaded_file = st.file_uploader("Sube tu archivo CSV", type=["csv"])
+uploaded_file = st.file_uploader("Upload your CSV file", type=["csv"])
 
 if uploaded_file:
     df = pd.read_csv(uploaded_file)
@@ -131,4 +131,5 @@ if uploaded_file:
                         file_name=file_info["file_name"],
                         mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
                         key=f"{partner}_{file_info['event_id']}"
+
                     )
